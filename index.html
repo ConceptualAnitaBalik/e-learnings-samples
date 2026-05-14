@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anita Balik — E-Learning Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-soft: #5a5a54;
+    --ink-muted: #9a9a90;
+    --paper: #f7f5f0;
+    --paper-warm: #eeece6;
+    --accent: #c8622a;
+    --accent-light: #f0ddd0;
+    --border: #dddbd4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  header {
+    padding: 4rem 2rem 3rem;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-bio {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 580px;
+    font-weight: 300;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .meta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* Main */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* Cards */
+  .samples {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2rem 2rem 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+  }
+
+  .card:hover {
+    border-color: #c8b8a8;
+    transform: translateX(4px);
+  }
+
+  .card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .card-type {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 520px;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--paper-warm);
+    color: var(--ink-soft);
+    border: 1px solid var(--border);
+  }
+
+  .card-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    white-space: nowrap;
+    padding-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .card-cta svg {
+    transition: transform 0.2s;
+  }
+
+  .card:hover .card-cta svg {
+    transform: translate(3px, -3px);
+  }
+
+  /* Contact strip */
+  .contact {
+    margin-top: 4rem;
+    padding: 2rem 2.5rem;
+    background: var(--ink);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contact-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .contact-text span {
+    color: var(--accent-light);
+    font-style: italic;
+  }
+
+  .contact-link {
+    font-size: 13px;
+    color: var(--accent-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,180,160,0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent-light);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .card { grid-template-columns: 1fr; }
+    .card-cta { justify-content: flex-start; }
+    .contact { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Portfolio — Work Samples</p>
+  <h1>Anita Balik<br><em>Instructional Designer</em><br>& IT Trainer</h1>
+  <p class="header-bio">30 years in IT training. 20 years in instructional design. Currently implementing WalkMe on Microsoft Dynamics 365 and Oracle at ZIM, a global container shipping company. These samples represent a range of my work — from enterprise CRM training to technical automotive e-learning.</p>
+  <div class="header-meta">
+    <div class="meta-item"><div class="meta-dot"></div>Articulate Storyline & Rise</div>
+    <div class="meta-item"><div class="meta-dot"></div>WalkMe · MS Dynamics · Oracle</div>
+    <div class="meta-item"><div class="meta-dot"></div>Synthesia · Camtasia · Captivate</div>
+  </div>
+</header>
+
+<main>
+  <p class="section-label">Selected work samples</p>
+
+  <div class="samples">
+
+    <a class="card" href="Leads refresher/story.html" target="_blank">
+      <div>
+        <div class="card-type">E-learning · Articulate Storyline</div>
+        <div class="card-title">CRM Leads — Refresher Training</div>
+        <div class="card-desc">A refresher course on lead management in Microsoft Dynamics 365 CRM. Covers creating, qualifying, disqualifying, and managing leads through the full sales pipeline. Designed for existing users who need to consolidate and update their knowledge.</div>
+        <div class="card-tags">
+          <span class="tag">Microsoft Dynamics 365</span>
+          <span class="tag">CRM</span>
+          <span class="tag">Sales</span>
+          <span class="tag">Refresher</span>
+        </div>
+      </div>
+      <div class="card-cta">
+        View sample
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </div>
+    </a>
+
+    <a class="card" href="KIA/story.html" target="_blank">
+      <div>
+        <div class="card-type">E-learning · Technical · Articulate Storyline</div>
+        <div class="card-title">KIA — On-Board Potential Equalisation</div>
+        <div class="card-desc">A highly technical automotive e-learning module explaining the on-board potential equalisation system in electric vehicles — why it exists, how it functions, and how to diagnose faults. Demonstrates the ability to translate complex engineering content into clear, structured learning for technical audiences.</div>
+        <div class="card-tags">
+          <span class="tag">Automotive</span>
+          <span class="tag">Technical training</span>
+          <span class="tag">EV systems</span>
+          <span class="tag">Diagnostics</span>
+        </div>
+      </div>
+      <div class="card-cta">
+        View sample
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </div>
+    </a>
+
+    <a class="card" href="CRM/ZRM Quote creation.mp4" target="_blank">
+      <div>
+        <div class="card-type">Video guide · Synthesia · AI Avatar</div>
+        <div class="card-title">CRM — Quote Creation Video Guide</div>
+        <div class="card-desc">A step-by-step video guide showing how to create a freight quote in Microsoft Dynamics 365 CRM — based on route, cargo type, and volume. Produced in Synthesia with an AI avatar and professional voiceover. Demonstrates the ability to deliver polished, scalable video training without traditional recording setups.</div>
+        <div class="card-tags">
+          <span class="tag">Microsoft Dynamics 365</span>
+          <span class="tag">Synthesia</span>
+          <span class="tag">Video guide</span>
+          <span class="tag">Logistics</span>
+        </div>
+      </div>
+      <div class="card-cta">
+        Watch video
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="contact">
+    <div class="contact-text">Interested in working together? <span>Let's talk.</span></div>
+    <a class="contact-link" href="https://www.linkedin.com/in/anita-balik-7b2780111" target="_blank">linkedin.com/in/anita-balik →</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Anita Balik · Instructional Designer & WalkMe Consultant
+</footer>
+
+</body>
+</html>
